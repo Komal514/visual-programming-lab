@@ -1,0 +1,189 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Q_02
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+//q1
+
+            //Q2
+            string[] s = { "hello ", "and ", "welcome ", "to ", "this ", "demo!" };
+
+            // Call the Merger method and display the result
+            string result = Merger(s);
+            Console.WriteLine(result);
+        }
+        static string Merger(string[] strings)
+        {
+            // Use string.Concat to combine the elements
+            return string.Concat(strings);
+        }
+
+        // Q6
+        int[,] testMarks = new int[5, 10]
+            {
+            { 92, 73, 86, 71, 97, 93, 95, 97, 80, 91 }, // Test 1
+            { 90, 86, 81, 80, 78, 78, 80, 82, 88, 88 }, // Test 2
+            { 99, 97, 89, 100, 77, 90, 78, 80, 78, 97 }, // Test 3
+            { 79, 95, 79, 77, 89, 84, 71, 92, 80, 83 }, // Test 4
+            { 72, 82, 97, 88, 90, 88, 80, 82, 83, 80 }  // Test 5
+            };
+
+            // Output the test marks
+            Console.WriteLine("Student\tTest 1\tTest 2\tTest 3\tTest 4\tTest 5");
+            for (int student = 0; student < 10; student++)
+            {
+                Console.Write($"Student {student + 1}\t");
+                for (int test = 0; test < 5; test++)
+                {
+                    Console.Write($"{testMarks[test, student]}\t");
+                }
+                Console.WriteLine();
+            }
+        }
+
+
+         class Program
+{
+    static void Main()
+    {
+        // Sample ratings for 40 students
+        int[] ratings = new int[40]
+        {
+                 1, 2, 2, 3, 3, 3, 4, 4, 4, 4,
+                 2, 3, 3, 5, 5, 5, 1, 2, 3, 3,
+                 4, 4, 5, 5, 1, 2, 3, 3, 4, 5,
+                 1, 2, 2, 3, 3, 4, 4, 5, 1, 5
+        };
+
+        // Array to hold the frequency of each rating
+        int[] frequency = new int[5];
+
+        // Count the frequency of each rating
+        foreach (int rating in ratings)
+        {
+            if (rating >= 1 && rating <= 5)
+            {
+                frequency[rating - 1]++;
+            }
+        }
+
+        // Output the frequency of each response
+        for (int i = 0; i < frequency.Length; i++)
+        {
+            Console.WriteLine($"Response {i + 1} given by: {frequency[i]} people");
+        }
+
+        //Q 5
+        class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Console.WriteLine("Choose an operation:");
+                Console.WriteLine("1. Decimal to Binary");
+                Console.WriteLine("2. Binary to Decimal");
+                Console.WriteLine("3. Exit");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("Enter a decimal number: ");
+                        if (int.TryParse(Console.ReadLine(), out int decimalNumber) && decimalNumber >= 0)
+                        {
+                            Console.WriteLine($"Binary: {DecimalToBinary(decimalNumber)}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input: Please enter a non-negative integer.");
+                        }
+                        break;
+
+                    case "2":
+                        Console.Write("Enter a binary number: ");
+                        string binaryInput = Console.ReadLine();
+                        try
+                        {
+                            Console.WriteLine($"Decimal: {BinaryToDecimal(binaryInput)}");
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Invalid input: Please enter a valid binary number.");
+                        }
+                        break;
+
+                    case "3":
+                        Console.WriteLine("Exiting the program.");
+                        return;
+
+                    default:
+                        Console.WriteLine("Invalid choice. Please select again.");
+                        break;
+                }
+            }
+        }
+
+        static string DecimalToBinary(int decimalNumber)
+        {
+            return Convert.ToString(decimalNumber, 2);
+        }
+
+        static int BinaryToDecimal(string binaryNumber)
+        {
+            return Convert.ToInt32(binaryNumber, 2);
+        }
+    }
+
+
+
+
+}
+}
+
+//q3
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Question_2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = "Hello world this is a test string with words of different lengths";
+            string[] result = ExtractWords(input);
+            Console.WriteLine(string.Join(", ", result));
+        }
+
+           public static string[] ExtractWords(string input)
+    {
+        // Split the input string into words
+        string[] words = input.Split(new char[] { ' ', ',', '.', '?', '!' }, StringSplitOptions.RemoveEmptyEntries);
+
+        // Use LINQ to filter the words
+        return words.Where(word => word.Length >= 4 && word.Length <= 5 && HasVowel(word)).ToArray();
+    }
+
+    public static bool HasVowel(string word)
+    {
+        // Use regular expression to check if the word contains any vowel
+        return Regex.IsMatch(word, "[aeiouAEIOU]");
+    }
+
+    }
+}
+
+
